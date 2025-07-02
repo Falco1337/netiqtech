@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="net.png">
+    <title>Terma & Syarat - Program Connect2Earn</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8;
+            color: #333;
+            line-height: 1.6;
+        }
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        .modal-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        .modal-content {
+            background-color: #ffffff;
+            padding: 2.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            max-width: 90%;
+            width: 500px;
+            transform: translateY(-20px);
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+        .modal-overlay.show .modal-content {
+            transform: translateY(0);
+        }
+        .modal-close-button {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #666;
+            transition: color 0.2s ease;
+        }
+        .modal-close-button:hover {
+            color: #333;
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8">
+    <div class="max-w-4xl mx-auto bg-white p-6 md:p-10 rounded-xl shadow-lg">
+        <div class="flex flex-col md:flex-row justify-between items-center mb-6 md:mb-8">
+            <h1 id="main-title" class="text-3xl md:text-4xl font-bold text-gray-800 mb-4 md:mb-0 text-center md:text-left">
+                Terma dan Syarat Program Connect2Earn
+            </h1>
+            <div class="flex space-x-2">
+                <button id="lang-my" class="px-5 py-2 rounded-lg font-medium transition-all duration-200 bg-blue-600 text-white shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
+                    MY
+                </button>
+                <button id="lang-en" class="px-5 py-2 rounded-lg font-medium transition-all duration-200 bg-gray-200 text-gray-700 hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50">
+                    EN
+                </button>
+            </div>
+        </div>
+
+        <div id="terms-content-my" class="space-y-6 text-gray-700">
+            <p class="text-lg font-semibold">Terma dan Syarat Program Connect2Earn</p>
+            <ol class="list-decimal list-inside space-y-4">
+                <li>
+                    <strong class="text-gray-800">Kelayakan Penyertaan</strong>
+                    <ul class="list-disc list-inside ml-4">
+                        <li>Program ini terbuka kepada semua individu atau syarikat yang berminat untuk menjadi ejen rujukan.</li>
+                        <li>Tiada keperluan untuk mempunyai kepakaran teknikal dalam pembangunan laman web atau sistem.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong class="text-gray-800">Proses Rujukan</strong>
+                    <ul class="list-disc list-inside ml-4">
+                        <li>Peserta dikehendaki mengisi borang penyertaan dengan maklumat lengkap mengenai diri sendiri serta klien yang dirujuk.</li>
+                        <li>Sebarang maklumat yang tidak lengkap boleh menyebabkan penyertaan ditolak.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong class="text-gray-800">Pengesahan Projek</strong>
+                    <ul class="list-disc list-inside ml-4">
+                        <li>Projek hanya dianggap sah setelah pihak NetIQ Technologies mengesahkan nilai serta keperluan projek daripada klien yang dirujuk.</li>
+                        <li>Projek dengan nilai minimum RM50,000 dan ke atas akan dipertimbangkan untuk pembayaran komisen melebihi 10%.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong class="text-gray-800">Bayaran Komisen</strong>
+                    <ul class="list-disc list-inside ml-4">
+                        <li>Komisen akan diberikan dalam lingkungan 2% hingga 10% daripada nilai projek yang telah disahkan.</li>
+                        <li>Pembayaran hanya akan dibuat setelah projek dimulakan dan pihak NetIQ Technologies menerima pembayaran daripada klien.</li>
+                        <li>Tiada komisen akan dibayar bagi projek yang dibatalkan atau ditangguhkan.</li>
+                        <li>Notifikasi pembayaran beserta resit rasmi akan dihantar melalui e-mel dan WhatsApp.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong class="text-gray-800">Penafian Tanggungjawab</strong>
+                    <ul class="list-disc list-inside ml-4">
+                        <li>NetIQ Technologies tidak akan bertanggungjawab ke atas sebarang pertikaian, tuntutan atau masalah yang berlaku antara peserta dan klien yang dirujuk.</li>
+                        <li>Peserta bertanggungjawab sepenuhnya untuk memastikan maklumat yang diberikan adalah tepat dan benar.</li>
+                        <li>Penyertaan dianggap tidak sah sekiranya maklumat didapati palsu atau mengelirukan.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong class="text-gray-800">Kerahsiaan Maklumat</strong>
+                    <ul class="list-disc list-inside ml-4">
+                        <li>Semua maklumat peribadi dan maklumat klien yang diterima akan dikendalikan secara sulit dan tidak akan dikongsikan kepada mana-mana pihak ketiga tanpa kebenaran bertulis.</li>
+                        <li>Maklumat ini hanya akan digunakan untuk tujuan pelaksanaan dan pengurusan program Connect2Earn.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong class="text-gray-800">Pematuhan Undang-undang</strong>
+                    <ul class="list-disc list-inside ml-4">
+                        <li>Peserta wajib mematuhi semua undang-undang dan peraturan yang berkuat kuasa semasa menjalankan sebarang aktiviti berkaitan program ini.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong class="text-gray-800">Penamatan Penyertaan</strong>
+                    <ul class="list-disc list-inside ml-4">
+                        <li>NetIQ Technologies berhak menamatkan penyertaan mana-mana individu atau syarikat yang melanggar mana-mana terma dan syarat tanpa sebarang notis awal.</li>
+                        <li>Sebarang rayuan atau alasan tidak akan dipertimbangkan.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong class="text-gray-800">Perubahan Terma</strong>
+                    <ul class="list-disc list-inside ml-4">
+                        <li>NetIQ Technologies berhak untuk mengubah, meminda atau mengemas kini mana-mana terma dan syarat ini pada bila-bila masa tanpa pemberitahuan awal.</li>
+                        <li>Peserta adalah bertanggungjawab untuk menyemak sebarang perubahan dari semasa ke semasa di laman web rasmi NetIQ Technologies (<a href="https://netiqtech.netlify.app/" target="_blank" class="text-blue-600 hover:underline">https://netiqtech.netlify.app/</a>).</li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+
+        <div id="terms-content-en" class="hidden space-y-6 text-gray-700">
+            <p class="text-lg font-semibold">Connect2Earn Program Terms and Conditions</p>
+            <ol class="list-decimal list-inside space-y-4">
+                <li>
+                    <strong class="text-gray-800">Eligibility</strong>
+                    <ul class="list-disc list-inside ml-4">
+                        <li>This program is open to all individuals or companies interested in becoming a referral agent.</li>
+                        <li>There is no requirement for technical expertise in website or system development.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong class="text-gray-800">Referral Process</strong>
+                    <ul class="list-disc list-inside ml-4">
+                        <li>Participants are required to fill out the participation form with complete information about themselves and the referred client.</li>
+                        <li>Any incomplete information may result in the rejection of participation.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong class="text-gray-800">Project Confirmation</strong>
+                    <ul class="list-disc list-inside ml-4">
+                        <li>A project is only considered valid after NetIQ Technologies confirms the value and requirements of the project from the referred client.</li>
+                        <li>Projects with a minimum value of RM50,000 and above will be considered for commission payments exceeding 10%.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong class="text-gray-800">Commission Payment</strong>
+                    <ul class="list-disc list-inside ml-4">
+                        <li>Commission will be given within 2% to 10% of the confirmed project value.</li>
+                        <li>Payment will only be made after the project has commenced and NetIQ Technologies has received payment from the client.</li>
+                        <li>No commission will be paid for cancelled or postponed projects.</li>
+                        <li>Payment notifications along with official receipts will be sent via email and WhatsApp.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong class="text-gray-800">Disclaimer of Responsibility</strong>
+                    <ul class="list-disc list-inside ml-4">
+                        <li>NetIQ Technologies will not be responsible for any disputes, claims, or problems occurring between the participant and the referred client.</li>
+                        <li>Participants are solely responsible for ensuring that the information provided is accurate and true.</li>
+                        <li>Participation is considered invalid if the information is found to be false or misleading.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong class="text-gray-800">Information Confidentiality</strong>
+                    <ul class="list-disc list-inside ml-4">
+                        <li>All personal and client information received will be handled confidentially and will not be shared with any third party without written consent.</li>
+                        <li>This information will only be used for the purpose of implementing and managing the Connect2Earn program.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong class="text-gray-800">Compliance with Laws</strong>
+                    <ul class="list-disc list-inside ml-4">
+                        <li>Participants are required to comply with all applicable laws and regulations when carrying out any activities related to this program.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong class="text-gray-800">Termination of Participation</strong>
+                    <ul class="list-disc list-inside ml-4">
+                        <li>NetIQ Technologies reserves the right to terminate the participation of any individual or company that violates any of these terms and conditions without prior notice.</li>
+                        <li>No appeals or excuses will be considered.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong class="text-gray-800">Changes to Terms</strong>
+                    <ul class="list-disc list-inside ml-4">
+                        <li>NetIQ Technologies reserves the right to change, amend, or update any of these terms and conditions at any time without prior notification.</li>
+                        <li>Participants are responsible for checking for any changes from time to time on the official NetIQ Technologies website (<a href="https://netiqtech.netlify.app/" target="_blank" class="text-blue-600 hover:underline">https://netiqtech.netlify.app/</a>).</li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+
+        <div class="mt-8 flex items-center">
+            <input type="checkbox" id="agree-checkbox" class="form-checkbox h-5 w-5 text-blue-600 rounded focus:ring-blue-500">
+            <label for="agree-checkbox" class="ml-3 text-lg text-gray-700" id="agree-label">
+                Saya setuju dengan Syarat-syarat dan Terma yang diberikan.
+            </label>
+        </div>
+
+        <div class="mt-8">
+            <button id="back-button" class="px-6 py-3 bg-gray-700 text-white font-semibold rounded-lg shadow-md hover:bg-gray-800 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50">
+                Kembali
+            </button>
+        </div>
+
+        <div class="mt-8 text-center text-gray-600 text-sm">
+            <p id="powered-by-text">Powered by NetIQ Technologies</p>
+            <p id="company-registration-text">202503176903(NS0310975-X)</p>
+        </div>
+    </div>
+
+    <div id="welcome-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close-button" id="welcome-modal-close-button">&times;</button>
+            <h2 class="text-2xl font-bold text-gray-800 mb-4" id="welcome-modal-title">Selamat Datang ke Program Connect2Earn</h2>
+            <p class="text-gray-700 mb-6" id="welcome-modal-message">Sila baca dengan teliti sebelum anda mengesahkan.</p>
+            <button class="px-8 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50" id="welcome-modal-ok-button">
+                Faham
+            </button>
+        </div>
+    </div>
+
+    <div id="google-form-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close-button" id="google-form-modal-close-button">&times;</button>
+            <h2 class="text-2xl font-bold text-gray-800 mb-4" id="modal-title">Terima Kasih!</h2>
+            <p class="text-gray-700 mb-6" id="modal-message">Sila lengkapkan borang di bawah untuk meneruskan:</p>
+            <a href="https://forms.gle/LPVdh3DiXBgTPiAD8" target="_blank" class="inline-block px-8 py-3 bg-green-600 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50" id="modal-link-text">
+                Register
+            </a>
+        </div>
+    </div>
+
+    <script>
+        const agreeCheckbox = document.getElementById('agree-checkbox');
+        const googleFormModal = document.getElementById('google-form-modal');
+        const googleFormModalCloseButton = document.getElementById('google-form-modal-close-button');
+        const backButton = document.getElementById('back-button');
+        const langMyButton = document.getElementById('lang-my');
+        const langEnButton = document.getElementById('lang-en');
+        const mainTitle = document.getElementById('main-title');
+        const termsContentMy = document.getElementById('terms-content-my');
+        const termsContentEn = document.getElementById('terms-content-en');
+        const agreeLabel = document.getElementById('agree-label');
+        const modalTitle = document.getElementById('modal-title');
+        const modalMessage = document.getElementById('modal-message');
+        const modalLinkText = document.getElementById('modal-link-text');
+
+        const welcomeModal = document.getElementById('welcome-modal');
+        const welcomeModalCloseButton = document.getElementById('welcome-modal-close-button');
+        const welcomeModalOkButton = document.getElementById('welcome-modal-ok-button');
+        const welcomeModalTitle = document.getElementById('welcome-modal-title');
+        const welcomeModalMessage = document.getElementById('welcome-modal-message');
+
+        const poweredByText = document.getElementById('powered-by-text');
+        const companyRegistrationText = document.getElementById('company-registration-text');
+
+        const translations = {
+            my: {
+                mainTitle: "Terma dan Syarat Program Connect2Earn",
+                agreeLabel: "Saya setuju dengan Syarat-syarat dan Terma yang diberikan.",
+                backButton: "Kembali",
+                modalTitle: "Terima Kasih!",
+                modalMessage: "Sila lengkapkan borang di bawah untuk meneruskan:",
+                modalLinkText: "Pergi ke Borang Google",
+                welcomeModalTitle: "Selamat Datang ke Program Connect2Earn",
+                welcomeModalMessage: "Sila baca dengan teliti sebelum anda mengesahkan.",
+                welcomeModalOkButton: "Faham",
+                poweredBy: "Powered by NetIQ Technologies",
+                companyReg: "202503176903(NS0310975-X)"
+            },
+            en: {
+                mainTitle: "Connect2Earn Program Terms and Conditions",
+                agreeLabel: "I agree to the Terms and Conditions provided.",
+                backButton: "Back",
+                modalTitle: "Thank You!",
+                modalMessage: "Please complete the form below to proceed:",
+                modalLinkText: "Go to Google Form",
+                welcomeModalTitle: "Welcome to Connect2Earn Program",
+                welcomeModalMessage: "Please read carefully before you confirm.",
+                welcomeModalOkButton: "Understood",
+                poweredBy: "Powered by NetIQ Technologies",
+                companyReg: "202503176903(NS0310975-X)"
+            }
+        };
+
+        let currentLang = 'my';
+
+        function updateUI(lang) {
+            currentLang = lang;
+            mainTitle.textContent = translations[lang].mainTitle;
+            agreeLabel.textContent = translations[lang].agreeLabel;
+            backButton.textContent = translations[lang].backButton;
+            modalTitle.textContent = translations[lang].modalTitle;
+            modalMessage.textContent = translations[lang].modalMessage;
+            modalLinkText.textContent = translations[lang].modalLinkText;
+            welcomeModalTitle.textContent = translations[lang].welcomeModalTitle;
+            welcomeModalMessage.textContent = translations[lang].welcomeModalMessage;
+            welcomeModalOkButton.textContent = translations[lang].welcomeModalOkButton;
+            poweredByText.textContent = translations[lang].poweredBy;
+            companyRegistrationText.textContent = translations[lang].companyReg;
+
+            if (lang === 'my') {
+                termsContentMy.classList.remove('hidden');
+                termsContentEn.classList.add('hidden');
+                langMyButton.classList.add('bg-blue-600', 'text-white');
+                langMyButton.classList.remove('bg-gray-200', 'text-gray-700');
+                langEnButton.classList.remove('bg-blue-600', 'text-white');
+                langEnButton.classList.add('bg-gray-200', 'text-gray-700');
+            } else {
+                termsContentMy.classList.add('hidden');
+                termsContentEn.classList.remove('hidden');
+                langEnButton.classList.add('bg-blue-600', 'text-white');
+                langEnButton.classList.remove('bg-gray-200', 'text-gray-700');
+                langMyButton.classList.remove('bg-blue-600', 'text-white');
+                langMyButton.classList.add('bg-gray-200', 'text-gray-700');
+            }
+        }
+
+        agreeCheckbox.addEventListener('change', function() {
+            if (this.checked) {
+                googleFormModal.classList.add('show');
+            } else {
+                googleFormModal.classList.remove('show');
+            }
+        });
+
+        googleFormModalCloseButton.addEventListener('click', function() {
+            googleFormModal.classList.remove('show');
+            agreeCheckbox.checked = false;
+        });
+
+        googleFormModal.addEventListener('click', function(event) {
+            if (event.target === googleFormModal) {
+                googleFormModal.classList.remove('show');
+                agreeCheckbox.checked = false;
+            }
+        });
+
+        backButton.addEventListener('click', function() {
+            window.location.href = 'index.html';
+        });
+
+        langMyButton.addEventListener('click', () => updateUI('my'));
+        langEnButton.addEventListener('click', () => updateUI('en'));
+
+        welcomeModalCloseButton.addEventListener('click', function() {
+            welcomeModal.classList.remove('show');
+        });
+
+        welcomeModalOkButton.addEventListener('click', function() {
+            welcomeModal.classList.remove('show');
+        });
+
+        welcomeModal.addEventListener('click', function(event) {
+            if (event.target === welcomeModal) {
+                welcomeModal.classList.remove('show');
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            updateUI(currentLang);
+            welcomeModal.classList.add('show');
+        });
+    </script>
+</body>
+</html>
